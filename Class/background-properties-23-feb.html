@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Properties</title>
+    <style>
+        #frame {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        body {
+            background-image: url(images.jfif);
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: top right;
+            background-size:auto ;
+            margin: 0;
+        }
+        .b {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 18px;
+            border: 2px solid #007bff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            margin: 5px;
+        }
+
+        .b:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            color: #fff;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <iframe id="frame" width="315" height="200" src="https://www.youtube.com/embed/EVAJYoJrieA?si=CXR1XlgwOAp_zFQz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div>
+        <button id="leftB" class="b">Move Left</button>
+        <button id="rightB" class="b">Move Right</button>
+        <button id="upB" class="b">Move Down</button>
+        <button id="downB" class="b">Move Up</button>
+        <button id="resetB" class="b">Reset</button>
+    </div>
+    <script>
+        const l = document.getElementById('leftB');
+        const r = document.getElementById('rightB');
+        const u = document.getElementById('upB');
+        const d = document.getElementById('downB');
+        const reset = document.getElementById('resetB');
+        const iframeFrame = document.getElementById('frame');
+
+        l.addEventListener('click', () => {
+            let currentLeft = iframeFrame.offsetLeft;
+            iframeFrame.style.left = currentLeft - 50 + "px";
+        });
+
+        r.addEventListener('click', () => {
+            let currentLeft = iframeFrame.offsetLeft;
+            iframeFrame.style.left = currentLeft + 50 + "px";
+        });
+
+        d.addEventListener('click', () => {
+            let currentTop = iframeFrame.offsetTop;
+            iframeFrame.style.top = currentTop - 50 + "px";
+        });
+
+        u.addEventListener('click', () => {
+            let currentTop = iframeFrame.offsetTop;
+            iframeFrame.style.top = currentTop + 50 + "px";
+        });
+        reset.addEventListener('click', () => {
+            iframeFrame.style.top = '50%';
+            iframeFrame.style.left = '50%';
+        });
+
+    </script>
+</body>
+</html>

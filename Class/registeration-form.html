@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        html,body {
+            font-family:Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            margin: 100px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #main {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input, select {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1>Registration Form</h1>
+        <form method="get" id="myForm">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="nameId" required>
+            
+            <label for="password">Password</label>
+            <input pattern="^[A-Za-z]+{3,}$" type="password" name="password" id="passwordId" required>
+
+            <label for="c-password">Confirm Password</label>
+            <input pattern="^[A-Za-z]+{3,}$" type="password" name="c-password" id="c-password" required>
+            
+            <label for="email">Email</label>
+            <input type="email" name="email" id="emailId" required>
+            
+            <label for="hobby">Hobby</label>
+            <input type="text" name="hobby" id="hobbyId">
+            
+            <label for="gender">Gender</label>
+            <div>
+                <input type="radio" name="gender" id="maleId" value="Male"> Male
+                <input type="radio" name="gender" id="femaleId" value="Female"> Female
+                <input type="radio" name="gender" id="otherId" value="Others"> Others
+            </div>
+            
+            <label for="category">Category</label>
+            <select name="category" id="categoryId" required>
+                <option value="" disabled selected>--Select--</option>
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="ST/SC">ST/SC</option>
+            </select>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let n = document.getElementById("nameId");
+            let moNo = document.getElementById("mobId");
+            let password = document.getElementById("passwordId");
+            let confirmPass = document.getElementById("c-password");
+
+            document.getElementById("myForm").addEventListener("submit", function(event) {
+                if(password.value !== confirmPass.value) {
+                    alert("Passwords do not match");
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+            
+            /*const re1 = /^[a-zA-Z]+$;
+            if(re1.test(name)) {
+                alert('done');
+                return true;
+            else {
+                alert("This cannot be empty");
+                return false
+            }*/
+            n.addEventListener("input", function () {
+                let text = n.value;
+                let lastChar = text.slice(-1);
+    
+                if (!isNaN(lastChar)) {
+                    n.value = text.slice(0, -1);
+                    alert("Numbers are not allowed!");
+                }
+            });
+
+            moNo.addEventListener("input", function() {
+                let text = moNo.value;
+                let lastChar = text.slice(-1);
+
+                if(isNaN(lastChar)) {
+                    lastChar.value = text.slice(0,-1);
+                    alert("Character are not allowed!");
+                }
+            })
+        });
+    </script>
+    
+    
+</body>
+</html>

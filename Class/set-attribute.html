@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        html,body {
+            display: flex;
+            justify-content: center;
+            margin: 30px;
+            background-color:rgb(229, 255, 191);
+        }
+
+        #heading {
+            font-family:Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        #image {
+            max-width: 500px;
+            height: 300px;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        #main__button {
+            padding: 20px 10px 20px 10px;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        .b {
+            padding: 10px 30px 10px 30px;
+            color: white;
+            background-color: rgb(63, 128, 233);
+            border: none;
+            border-radius: 20px;
+        }
+
+        .b:hover {
+            background-color: rgb(37, 37, 46);
+            cursor: pointer;
+            transform: scale(1.1);
+            box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        #track {
+            display: flex;
+            font-size: 25px;
+            text-align: center;
+            align-items: center;
+        }
+
+
+
+
+        @media only screen and (max-width: 768px) {
+            html,body {
+                display: flex;
+                justify-content: center;
+                margin: 20px;
+                background-color:rgb(229, 255, 191);
+            }
+
+            #heading {
+                font-family:Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+
+            #image {
+                max-width: 500px;
+                height: 200px;
+                max-height: 300px;
+                border-radius: 10px;
+                box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+
+            #main__button {
+                padding: 20px 10px 20px 10px;
+                display:flex;
+                justify-content:space-between;
+            }
+
+            .b {
+                padding: 10px 30px 10px 30px;
+                color: white;
+                background-color: rgb(63, 128, 233);
+                border: none;
+                border-radius: 20px;
+            }
+
+            .b:hover {
+                background-color: rgb(37, 37, 46);
+                cursor: pointer;
+                transform: scale(1.1);
+                box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+
+            #track {
+                display: flex;
+                font-size: 25px;
+                text-align: center;
+                align-items: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1 id="heading">Gallery</h1>
+        <div class="main__img">
+            <img id="image" src="https://images.alphacoders.com/133/thumb-440-1334620.webp" alt="Image">
+        </div>
+        <div id="main__button">
+            <button id="b1" class="b">Back</button>
+            <label id="track" for=""></label>
+            <button id="b2" class="b">Next</button>
+        </div>  
+    </div>
+
+    <script>
+        let arr = ["https://images.alphacoders.com/133/thumb-440-1334620.webp","https://images7.alphacoders.com/132/thumb-440-1329456.webp","https://images7.alphacoders.com/611/thumb-440-611138.webp","https://images.alphacoders.com/131/thumb-440-1311951.webp","https://images7.alphacoders.com/593/thumb-440-593476.webp","https://images7.alphacoders.com/736/thumb-440-736462.webp","https://images.alphacoders.com/545/thumb-440-545918.webp","https://images3.alphacoders.com/134/thumb-440-1341491.webp","https://images6.alphacoders.com/659/thumb-440-659627.webp"];
+        let b1 = document.getElementById("b1");
+        let b2 = document.getElementById("b2");
+        let track = document.getElementById("track");
+        let counter = 0;
+        let length = arr.length;
+
+        track.innerText = 1+"/"+length;
+
+        b2.addEventListener("click" , () => {
+            if(counter == length-1) {
+                counter = 0;
+            } else {
+                counter++;
+            }
+            image.setAttribute("src",arr[counter]);
+
+            track.innerText = (counter+1) + "/" + length;
+        })
+
+        b1.addEventListener("click" , () => {
+            if(counter == 0) {
+                counter = length-1;
+            } else {
+                counter--;
+            }
+            image.setAttribute("src",arr[counter]);
+
+            track.innerText = (counter+1) + "/" + length;
+        })
+    </script>
+</body>
+</html>

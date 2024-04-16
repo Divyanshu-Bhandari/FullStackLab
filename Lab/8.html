@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            margin: 30px;
+            background-color: rgb(210, 210, 197);
+        }
+        #landing__section1 {
+            font-size: 20px;
+            background-color: aliceblue;
+        }
+        
+        #landing__section2 {
+            font-size: 20px;
+            background-color: aliceblue;
+        }
+        
+        #landing__section1>* , #landing__section2>* {
+            margin-left: 20px ;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            margin-right: 2px;
+        }
+
+        .input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .labels {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        #landing__buttons>button {
+            display: inline-block;
+            border: none;
+            color: white;
+            background-color:#387ed1;
+            border-radius: 3px;
+            margin: 20px;
+            padding: 10px 30px 10px 30px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        #landing__buttons>button:hover{
+            background-color:#252424 ;
+        }
+    </style>
+</head>
+<body>  
+    <form>
+        <div id="landing">
+            <fieldset style="background-color: aliceblue ;  border-radius: 8px; margin-bottom: 15px;">
+                <legend style="font-size: 20px;">Basic Infomation</legend>
+                <div id="landing__section1">
+                    
+                    <label class="labels" for="name">Full Name:</label>
+                    <input type="text" placeholder="Enter Your Name" name="dob" required><br>
+                    
+                    <label class="labels" for="dob">Birth Date:</label>
+                    <input type="date" name="dob" id=""><br>
+
+                    <label class="labels" for="gender">Gender:</label>
+                    <input class="in" type="radio" name="gender" id=""> Male
+                    <input class="in" type="radio" name="gender" id=""> Female <br>
+
+                    <label class="labels" for="address">Address:</label>
+                    <input type="text" name="address" id=""><br>
+
+                    <label class="labels" for="phone">Phone Number:</label>
+                    <input type="tel" placeholder="+91 _ _ _" name="phone" id="">
+                </div>
+            </fieldset>
+
+            <fieldset style="background-color: aliceblue; border-radius: 8px;">
+                <legend style="font-size: 20px;">Extra Information</legend>
+                <div id="landing__section2">
+                    <label class="labels" for="interest">Interest:</label>
+                    <input class="in" type="checkbox" name="interest" id=""> Books
+                    <input class="in" type="checkbox" name="interest" id=""> Movies
+                    <input class="in" type="checkbox" name="interest" id=""> VideoGames <br>
+
+                    <label class="labels" for="color">Favorite color</label>
+                    <input type="color" name="" id="">
+                </div>
+            </fieldset>
+
+            <div id="landing__buttons">
+                <button>Send Data</button>
+                <button>Reset form</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

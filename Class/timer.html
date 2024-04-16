@@ -1,0 +1,197 @@
+<!--js program to implement a clock take two button one for start clock one for stop clock-->
+<!--write a js program to implement a timer on click of two button start and stop timer-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+
+    <style>
+        html,body {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(210, 228, 246);
+            margin: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main {
+            height: 250px;
+            width: 400px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 30px;
+            box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .main__panel {
+            padding: 30px 30px 0px 30px;
+            display: flex;
+            justify-content:center;
+        }
+
+        .main__panel > input {
+            height: 60px;
+            width: 100px;
+            font-size: 50px;
+            text-align: center;
+            margin:10px;
+            margin-bottom: 0;
+            border-radius: 5px;
+        }
+
+        .main__label {
+            display: flex;
+            justify-content:space-around;
+            margin: 0px 15px 0px 15px;
+        }
+
+        .main__b {
+            display: flex;
+            justify-content: center;
+        }
+
+        .main__b > button {
+            height: 40px;
+            width: 100px;
+            font-size: 20px;
+            padding: 10px;
+            text-align: center;
+            margin:10px;
+            margin-bottom: 30px;
+
+            color: white;
+            background-color: rgb(63, 128, 233);
+            border: none;
+            border-radius: 20px;
+        }
+
+        .main__b > button:hover {
+            background-color: rgb(37, 37, 46);
+            cursor: pointer;
+            transform: scale(1.1);
+            box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .main__b > button:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="main__panel">
+            <input type="number" max="60" name="" id="hh" placeholder="0">
+
+            <input type="number" max="60"  name="" id="mm" placeholder="0">
+
+            <input type="number" max="60" name="" id="ss" placeholder="0">
+        </div>
+
+        <div class="main__label">
+            <p>HH</p>
+            <p>MM</p>
+            <p>SS</p>
+        </div>
+
+        <div class="main__b">
+            <button id="b1">Start</button>
+            <button id="b3" disabled>Pause</button>
+            <button id="b2">Reset</button>
+        </div>
+    </div>
+    <script>
+        let i1 = document.getElementById("hh");
+        let i2 = document.getElementById("mm");
+        let i3 = document.getElementById("ss");
+
+        let b1 = document.getElementById("b1");
+        let b2 = document.getElementById("b2");
+        let b3 = document.getElementById("b3");
+        let intervalId;
+
+        i1.addEventListener('click', function() {
+            this.select();
+        });
+        i2.addEventListener('click', function() {
+            this.select();
+        });
+        i3.addEventListener('click', function() {
+            this.select();
+        });
+
+        function updateClock(hh, mm, ss) {
+            i1.value = hh;
+            i2.value = mm;
+            i3.value = ss;
+        }
+
+        function timer(hh, mm, ss) {
+            intervalId = setInterval(function () {
+                if (i1.value == 0 && i2.value == 0 && i3.value == 0) {
+                    clearInterval(intervalId);
+                    b3.setAttribute("disabled", "true");
+                    alert("Timer Finished!");
+                    return;
+                }
+
+                if (ss == 0) {
+                    if (mm == 0) {
+                        hh--;
+                        mm = 60;
+                    }
+                    mm--;
+                    ss = 60;
+                }
+
+                ss--;
+                updateClock(hh, mm, ss);
+            }, 1000);
+        }
+
+        b1.addEventListener("click", () => {
+            b1.innerText = "Start";
+
+            let hh = parseInt(i1.value, 10);
+            let mm = parseInt(i2.value, 10);
+            let ss = parseInt(i3.value, 10);
+
+            if (i1.value == 0 && i2.value == 0 && i3.value == 0) {
+                alert("Enter Value Above 0 seconds!");
+                return;
+            }
+            if(hh < 0) {
+                hh = Math.abs(hh);
+            }
+            if(mm < 0) {
+                mm = Math.abs(mm);
+            }
+            if(ss < 0) {
+                ss= Math.abs(ss);
+            }
+
+            b3.removeAttribute("disabled");
+
+            timer(hh,mm,ss);
+        })
+        b2.addEventListener("click", () => {
+            clearInterval(intervalId);
+            b1.innerText = "Start";
+            b3.setAttribute("disabled", "true");
+            i1.value = 0;
+            i2.value = 0;
+            i3.value = 0;
+        })
+        b3.addEventListener("click", () => {
+            if (i1.value == 0 && i2.value == 0 && i3.value == 0) {
+                alert("Enter Value Above 0 seconds!");
+                return;
+            }
+            b1.innerText = "Continue";
+            clearInterval(intervalId);
+        })
+    </script>
+</body>
+</html>

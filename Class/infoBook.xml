@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note xmlns="" xmlns:xsi="" xsi:schemeaLocation="">
+
+<book>
+    <bookName>Ultimate Maths</bookName>
+    <author>RDJ</author>
+    <publisher>Publiseded by</publisher>
+    <price>3000/-</price>
+    <isb-number>1</isb-number>
+</book>

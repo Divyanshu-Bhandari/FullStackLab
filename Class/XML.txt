@@ -1,0 +1,7 @@
+XML: 
+
+&lt = <
+&yt = <
+
+write an xml file to store the info about book
+{ bookname, author, publisher , price , isb number}
